@@ -5,14 +5,23 @@ var game = {
   players: [],
   hands: [],
   buildDeck: function(){
-
+    for (var i = 0; i < values.length; i++){
+      deck.push([values[i], "Clubs"]);
+      deck.push([values[i], "Hearts"]);
+      deck.push([values[i], "Diamonds"]);
+      deck.push([values[i], "Spades"]);
+    }
   },
   shuffleDeck: function(){
-
+    	for(var j, x, i = deck.length; i; j = parseInt(Math.random() * i), x = deck[--i], deck[i] = deck[j], deck[j] = x);
+    	return deck;
+    }
   },
   getMorePlayers: function(){
-
-  },
+    var playerNames = prompt("Enter player's name.");
+    players.push([playerNames]);
+  }
+},
   deal: function(){
 
   },
