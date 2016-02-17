@@ -31,7 +31,15 @@ var game = {
 
   },
   getMorePlayers: function(){
+    // I'm going to assume that the user will always enter either 'y' or 'n'
+    var usrAnswer = prompt("Would you like to add another player?");
+    usrAnswer = usrAnswer.toLowerCase();
 
+    if (usrAnswer === 'y') {
+      var guestName = prompt("Ok! What is their name?");
+      this.players.push(guestName);
+    }
+    console.log(this.players);
   },
   deal: function(){
 
@@ -43,6 +51,11 @@ var game = {
 
   },
   playANewGame: function(){
+    var playerName = prompt("Welcome to High-Card! What is your name?");
+    this.players.push(playerName);
+    this.buildDeck();
+    this.shuffleDeck();
+    this.getMorePlayers();
 
   }
 }
