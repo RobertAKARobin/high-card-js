@@ -10,7 +10,7 @@ var game = {
         this.deck.push([values[value], suits[suit]]);
       }
     }
-    // console.log(this.deck);
+    console.log(this.deck);
   },
   shuffleDeck: function(){
     // Fisher-Yates shuffle!
@@ -28,7 +28,6 @@ var game = {
       // repeat until no values remain to be shuffled
     }
     // console.log(this.deck);
-
   },
   getMorePlayers: function(){
     // I'm going to assume that the user will always enter either 'y' or 'n'
@@ -39,10 +38,16 @@ var game = {
       var guestName = prompt("Ok! What is their name?");
       this.players.push(guestName);
     }
-    console.log(this.players);
+    // console.log(this.players);
   },
   deal: function(){
+    var randomIndex;
 
+    for (var i = 0; i < this.players.length; i++) {
+      randomIndex = Math.floor(Math.random() * 52);
+      this.hands.push([this.players[i], this.deck[randomIndex]]);
+    }
+    // console.log(this.hands);
   },
   findHighestCard: function(){
 
@@ -56,6 +61,7 @@ var game = {
     this.buildDeck();
     this.shuffleDeck();
     this.getMorePlayers();
+    this.deal();
 
   }
 }
