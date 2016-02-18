@@ -4,10 +4,22 @@ var game = {
   deck: [],
   players: [],
   hands: [],
-  buildDeck: function(){
-
+  buildDeck: function() { // running continous loop in console
+  for (i = 0; i < values.length; j++) {
+      for (j = 0; j < suits.length; j++) {
+        game.deck.push(values[i]+suits[j]);
+      }
+  }
   },
-  shuffleDeck: function(){
+  shuffleDeck: function(){ // written based on material I saw online but need to figure out how it works
+    for (j = 0; j < game.deck.length; j++) {
+      k = Math.floor(Math.random() * game.deck.length);
+      temp = game.card[j];
+      game.deck[j] = game.deck[k];
+      game.deck[k] = temp;
+    }
+}
+
 
   },
   getMorePlayers: function(){
