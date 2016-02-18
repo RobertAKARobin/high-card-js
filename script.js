@@ -5,21 +5,29 @@ var game = {
   players: [],
   hands: [],
   buildDeck: function(){
-    var self    = this;
+    var self. = this;
     values.forEach(function(value){
+      // console.log("Value" + value)
       suits.forEach(function(suit){
+        // console.log("Suit" + suit)
         self.deck.push([value, suit]);
+        // console.log(deck) & console.dir(deck)
+        // could also utilize game.deck.push
       });
     });
   },
   shuffleDeck: function(){
     this.deck.sort(function(){
-      if(Math.random() > 0.5) return 1;
+      if(Math.random() > 0.5) return 1; // using .5 because it will be 0-0. something
       else return -1;
     });
   },
+  // OR var shuffled = [];
+  // game.deck.forEach(function(card){
+  //console.log(card)
+//})
   getMorePlayers: function(){
-    var playerName = prompt(this.player.length + " player(s) so far. Enter a player name, or click 'cancel' to play.");
+    var playerName = prompt(this.player.length + "play.");
     if(playerName){
       this.players.push(playerName);
       this.getMorePlayers();
