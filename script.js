@@ -13,11 +13,21 @@ var game = {
     };
     return game.deck;
   },
-  shuffleDeck: function(){
-    var input = this; //reassign this to reference whatever the input is for reusability.
-    for(var i = input.length-1; i >= 0; i--){
-      var randomIndex = Math.floor((Math.random() * (game.deck.length +1);// +1 so that you don't multiply by 0 index.
+  shuffleDeck: function(game.deck){
+    var copyOfArray = [];
+    var n = game.deck.length;
+    var i;
+    while(n){
+      i = Math.floor((Math.random() * (game.deck.length +1));// +1 so that you don't multiply by 0 index.
+
+      if (i in game.deck){
+        copyOfArray.push(game.deck[i]);
+        delete array[i];
+        n--;
+      }
     }
+
+    return copyOfArray;
   },
   /*game.getMorePlayers asks for number of players and then a name for each player and saves to game.players*/
   getMorePlayers: function(){
