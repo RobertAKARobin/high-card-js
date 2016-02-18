@@ -4,25 +4,34 @@ var game = {
   deck: [],
   players: [],
   hands: [],
-  buildDeck: function(){
-
-  },
-  shuffleDeck: function(){
-
-  },
+  // buildDeck: function(){
+  //
+  // },
+  // shuffleDeck: function(){
+  //
+  // },
   getMorePlayers: function(){
-
-  },
-  deal: function(){
-
-  },
-  findHighestCard: function(){
-
-  },
-  announceWinners: function(){
-
-  },
-  playANewGame: function(){
+    var addPlayer = prompt("Do you want to add an additional player?", "Type 'Y' for 'Yes' Or 'N' for 'No'");
+    if((addPlayer === 'y')||(addPlayer === 'Y')){
+        var playerNum = prompt("How many new players", "Type a number 1-4");
+        for(i = 0; i<playerNum; i++){
+          var fname = prompt("What is new players name?", "Type Name");
+          game.players[i] = fname;
+        };
+    }else{
+      alert("Okay, I will shuffle the deck.");
+    }
+  // },
+  // deal: function(){
+  //
+  // },
+  // findHighestCard: function(){
+  //
+  // },
+  // announceWinners: function(){
+  //
+  // },
+  // playANewGame: function(){
 
   }
 }
