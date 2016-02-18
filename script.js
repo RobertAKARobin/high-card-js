@@ -4,9 +4,14 @@ var game = {
   deck: [],
   players: [],
   hands: [],
-  buildDeck: function(){
-    .
-  },
+  buildDeck: function() { // running continous loop in console
+  for (i = 0; i < values.length; j++) {
+      for (j = 0; j < suits.length; j++) {
+        game.deck.push(values[i]+suits[j]);
+      }
+  }
+}
+      },
   shuffleDeck: function(){
 
   },
