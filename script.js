@@ -4,6 +4,7 @@ var game = {
   deck: [],
   players: [],
   hands: [], // Note! Array of objects!
+
   buildDeck: function(){
     var self = this
     values.forEach(function(value)
@@ -45,7 +46,7 @@ var game = {
     this.players.forEach(function(player){
       var card = self.deck.pop();
       text += player + ": " + card[0] + " of " + card[1] + ".\n";
-      self.hands.push({player: player, value: card[0], suit: card[1]}) //Array of objects!
+      self.hands.push({player: player, value: card[0], suit: card[1]}) //Self! Watch out for hands! Array of objects!
     });
     window.alert(text);
   },
@@ -65,7 +66,7 @@ var game = {
 
   announceWinners: function(){
     var text = "";
-    this.hands.forEach(function(hand, place)
+    this.hands.forEach(function(hand, place) // Self! Watch out for array of objects!
     {
       text += hand.player + " is number " + (place + 1) + ", with the " + hand.value + " of " + hand.suit + ".\n";
     });
