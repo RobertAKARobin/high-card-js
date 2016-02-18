@@ -42,12 +42,21 @@ var game = {
 
   //Assigns one card to each player.
   deal: function(){
-    //pop a card from deck
-    var max = game.players.length;
-    for (var k = 0; k < max; k++) {
+
+    //forEach value in players, pop a card- game.deck.pop();
+    game.players.forEach(function() {
       var cardDrawn = game.deck.pop();
-      game.hands.push([game.players[k], cardDrawn]); //currently only adds one card to hands
-    }
+      var max = game.players.length;
+      for (var k = 0; k < max; k++) {
+      var cardDrawn = game.deck.pop();
+        game.hands.push([game.players[k], cardDrawn]); //currently only adds one card to hands
+      //}
+
+    })
+    //create hands array = [[player], [popped card]]
+
+    //pop a card from deck
+
     //create game.hands.push([players[k], cardDrawn);
   },
 
