@@ -1,14 +1,15 @@
 var values  = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 var suits   = ["Clubs", "Diamonds", "Hearts", "Spades"];
 var game = {
-  deck: [(values.length * suits.length)],
-  players: [a, b],
-  hands: [1, 2],
+  deck: [],
+  players: [],
+  hands: [],
 
   buildDeck: function(){
-    for (var i = 0; i < values.length; i++){
-      for (var i = 0; i < suits.length; i++)
-      console.log(deck [i]);
+    var self = this;
+    for (var v = 0; v < values.length; v++){
+      for (var s = 0; s < suits.length; s++)
+      this.deck.push([values], [suits]);
     }
   }
 
