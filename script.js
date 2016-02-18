@@ -5,7 +5,7 @@ var game = {
   players: [],
   hands: [],
   buildDeck: function(){
-
+    .
   },
   shuffleDeck: function(){
 
