@@ -4,9 +4,15 @@ var game = {
   deck: [],
   players: [],
   hands: [],
-  buildDeck: function(){
 
-  },
+  buildDeck: function(){
+    for(var s = 0; s < suits.length; s++){
+      for (var v = 0; v < values.length; v++){
+      game.deck.push([values[v], suits[s]])}
+  }
+    }
+
+      },
   shuffleDeck: function(){
 
   },
