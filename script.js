@@ -10,6 +10,7 @@ var game = {
     var max = suits.length;
     for (var i = 0; i < max; i++) {
         for (var j = 0; j < values.length; j++) {
+        //create deck array with values and suits subarrays
         game.deck.push([values[j],suits[i]]);
       }
     }
@@ -41,7 +42,13 @@ var game = {
 
   //Assigns one card to each player.
   deal: function(){
-
+    //pop a card from deck
+    var max = game.players.length;
+    for (var k = 0; k < max; k++) {
+      var cardDrawn = game.deck.pop();
+      game.hands.push([game.players[k], cardDrawn]); //currently only adds one card to hands
+    }
+    //create game.hands.push([players[k], cardDrawn);
   },
 
   //Finds the player with the highest card. Aces are high.
