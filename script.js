@@ -24,6 +24,8 @@ var game = {
   }, */
   getMorePlayers: function(){
 
+/* when more players are added pass it into the var game players array */
+
   },
   deal: function(){
 
@@ -35,6 +37,8 @@ var game = {
 
   },
   playANewGame: function(){
+
+/* Reset the game upon click ok on the dialog box */
 
   }
 }
