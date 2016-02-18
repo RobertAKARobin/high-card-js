@@ -1,0 +1,51 @@
+
+var values  = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+var suits  = ["Clubs", "Diamonds", "Hearts", "Spades"];
+var game = {
+  deck: [],
+  players: [],
+  hands: [],
+  buildDeck: function(){
+    var x = this;
+  values.forEach(function(value){
+  suits.forEach(function(suit){
+  x.deck.push([value, suit])
+})
+  })
+},
+  shuffleDeck: function(){
+    var x =this;
+    x.deck.sort(Math.random)
+     var randomIndex = Math.floor(Math.random() * x.deck.length);
+
+// for (var i = 0; i < 0.5; i++)
+  },
+  getMorePlayers: function(){
+    this.players.length + " current player list. Enter player name, or click 'continue' to begin.");
+    var morePlayers = prompt("Do you want to add more players? (Y/N)\n[Y]es\n[N]o").toLowerCase;
+    if(morePlayers) {
+    case "y":
+    if morePlayers();
+    return this.players.push(morePlayers);
+    break;
+    case "n";
+    if deal();
+    return this.getMorePlayers();
+    break;
+    }
+  }
+
+  },
+  deal: function(){
+ 
+  },
+  findHighestCard: function(){
+
+  },
+  announceWinners: function(){
+
+  },
+  playANewGame: function(){
+
+  }
+}
