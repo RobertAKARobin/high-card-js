@@ -3,7 +3,7 @@ var suits   = ["Clubs", "Diamonds", "Hearts", "Spades"];
 var game = {
   deck: [],
   players: [],
-  hands: [],
+  hands: [], // Note! Array of objects!
   buildDeck: function(){
     var self = this
     values.forEach(function(value)
@@ -40,7 +40,14 @@ var game = {
   },
 
   deal: function(){
-
+    var self = this;
+    var text = "";
+    this.players.forEach(function(player){
+      var card = self.deck.pop();
+      text += player + ": " + card[0] + " of " + card[1] + ".\n";
+      self.hands.push({player: player, value: card[0], suit: card[1]}) //Array of objects!
+    });
+    window.alert(text);
   },
 
   findHighestCard: function(){
@@ -57,15 +64,21 @@ var game = {
   },
 
   announceWinners: function(){
-    var text;
+    var text = "";
     this.hands.forEach(function(hand, place)
     {
-      text += hand.player + "is number " + (place + 1) + ", with the " + hand.value + " of " + "hand.suit" + ".";
+      text += hand.player + " is number " + (place + 1) + ", with the " + hand.value + " of " + hand.suit + ".\n";
     });
     window.alert(text);
 
   },
   playANewGame: function(){
+    this.buildDeck();
+    this.shuffleDeck();
+    this.getMorePlayers();
+    this.deal();
+    this.findHighestCard();
+    this.announceWinners();
 
   }
 }
