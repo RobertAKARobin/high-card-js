@@ -13,9 +13,12 @@ var game = {
     };
     return game.deck;
   },
-  // shuffleDeck: function(){
-  //
-  // },
+  shuffleDeck: function(){
+    var input = this; //reassign this to reference whatever the input is for reusability.
+    for(var i = input.length-1; i >= 0; i--){
+      var randomIndex = Math.floor((Math.random() * (game.deck.length +1);// +1 so that you don't multiply by 0 index.
+    }
+  },
   /*game.getMorePlayers asks for number of players and then a name for each player and saves to game.players*/
   getMorePlayers: function(){
     var addPlayer = prompt("Do you want to add an additional player?", "Type 'Y' for 'Yes' Or 'N' for 'No'");
