@@ -7,7 +7,7 @@ var game = {
   buildDeck: function(){
     for (i = 0; i < values.length; i += 1) {
         for (j = 0; j < suits.length; j += 1)
-    game.deck.push(values[i] + " of " + suits[j]);
+    game.deck.push({cardValue: values[i], cardSuit: suits[j]});
     } console.log(game.deck)
 
   },
@@ -30,15 +30,43 @@ var game = {
 
   },
   findHighestCard: function(){
-    if (parseInt(game.hands[0].dealtCard) > parseInt(game.hands[1].dealtCard)) {
+
+    /**
+    player1 = game.hands[0].dealtCard.cardValue
+    player2 = game.hands[1].dealtCard.cardValue
+    var J = 11
+    var Q = 12;
+    var K = 13;
+    var A = 14;
+    console.log(player1 + " and " + player2)
+    **/
+
+    if (game.hands[0].dealtCard.cardValue === 'J') {
+      game.hands[0].dealtCard.cardValue = 11;
+    } else if (game.hands[0].dealtCard.cardValue === 'Q') {
+      game.hands[0].dealtCard.cardValue = 12
+    } else if (game.hands[0].dealtCard.cardValue === 'K') {
+      game.hands[0].dealtCard.cardValue = 13
+    } else if (game.hands[0].dealtCard.cardValue === 'A') {
+      game.hands[0].dealtCard.cardValue = 14
+    } else if (game.hands[1].dealtCard.cardValue === 'J') {
+      game.hands[1].dealtCard.cardValue = 11
+    } else if (game.hands[1].dealtCard.cardValue === 'Q') {
+      game.hands[1].dealtCard.cardValue = 12
+    } else if (game.hands[1].dealtCard.cardValue === 'K') {
+      game.hands[1].dealtCard.cardValue = 13
+    } else if (game.hands[1].dealtCard.cardValue === 'A') {
+      game.hands[1].dealtCard.cardValue = 14
+    } else
+
+    if (game.hands[0].dealtCard.cardValue > game.hands[1].dealtCard.cardValue) {
       console.log(game.hands[0].playerName + ' wins!');
-    } else if (parseInt(game.hands[0].dealtCard) < parseInt(game.hands[1].dealtCard)) {
+    } else if (game.hands[0].dealtCard.cardValue < game.hands[1].dealtCard.cardValue) {
         console.log(game.hands[1].playerName + ' wins!');
-    } else if (parseInt(game.hands[0].dealtCard) === (parseInt(game.hands[1].dealtCard))) {
+    } else if (game.hands[0].dealtCard.cardValue === game.hands[1].dealtCard.cardValue) {
         console.log('game tied');
       } else null;
   },
-
   announceWinners: function(){
 
   },
