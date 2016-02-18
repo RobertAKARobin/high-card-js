@@ -16,10 +16,9 @@ var game = {
     var input = this.deck;
 
     for (var i = this.deck.length-1; i >=0; i--) {
-
+      //code below not my idea. but it worked.
        var randomIndex = Math.floor(Math.random()*(i+1));
        var itemAtIndex = this.deck[randomIndex];
-
        this.deck[randomIndex] = this.deck[i];
        this.deck[i] = itemAtIndex;
     }
