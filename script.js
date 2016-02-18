@@ -1,13 +1,19 @@
-var values  = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
-var suits   = ["Clubs", "Diamonds", "Hearts", "Spades"];
+var values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+var suits  = ["Clubs", "Diamonds", "Hearts", "Spades"];
+var choices = values.concat(suits);
 var game = {
   deck: [],
   players: [],
   hands: [],
-  buildDeck: function(){
+  buildDeck: function(values , suits){
+
+for(i; i < 0 i++)
 
   },
+
   shuffleDeck: function(){
+
+  Math.Random();
 
   },
   getMorePlayers: function(){
@@ -24,5 +30,13 @@ var game = {
   },
   playANewGame: function(){
 
+    shuffleDeck()
+    getMorePlayers()
+    deal()
+    findHighestcard()
+    announceWinners()
+    playANewGame()
+
   }
+
 }
