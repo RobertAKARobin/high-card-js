@@ -4,12 +4,19 @@ var game = {
   deck: [],
   players: [],
   hands: [],
-  // buildDeck: function(){
-  //
-  // },
+  /*game.deck becomes an array of arrays, with each inside array holding one value and one suit 'pair'.*/
+  buildDeck: function(){
+    for(i = 0; i<values.length; i++){
+      for(j = 0; j<suits.length; j++){
+        game.deck.push([values[i],suits[j]]);
+      };
+    };
+    return game.deck;
+  },
   // shuffleDeck: function(){
   //
   // },
+  /*game.getMorePlayers asks for number of players and then a name for each player and saves to game.players*/
   getMorePlayers: function(){
     var addPlayer = prompt("Do you want to add an additional player?", "Type 'Y' for 'Yes' Or 'N' for 'No'");
     if((addPlayer === 'y')||(addPlayer === 'Y')){
