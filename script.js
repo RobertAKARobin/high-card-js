@@ -7,7 +7,7 @@ var game = {
   hands: [],
   buildDeck: function(values , suits){
 
-game.deck = choices;
+for(i; i < 0 i++)
 
   },
 
@@ -29,6 +29,13 @@ game.deck = choices;
 
   },
   playANewGame: function(){
+
+    shuffleDeck()
+    getMorePlayers()
+    deal()
+    findHighestcard()
+    announceWinners()
+    playANewGame()
 
   }
 
