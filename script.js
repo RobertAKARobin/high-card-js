@@ -13,15 +13,16 @@ var game = {
     };
     return game.deck;
   },
-  shuffleDeck: function(game.deck){
+
+  shuffleDeck: function(deck){
     var copyOfArray = [];
-    var n = game.deck.length;
+    var n = deck.length;
     var i;
     while(n){
-      i = Math.floor((Math.random() * (game.deck.length +1));// +1 so that you don't multiply by 0 index.
+      i = Math.floor((Math.random() * (deck.length +1));// +1 so that you don't multiply by 0 index.
 
-      if (i in game.deck){
-        copyOfArray.push(game.deck[i]);
+      if (i in deck){
+        copyOfArray.push(deck[i]);
         delete array[i];
         n--;
       }
@@ -29,6 +30,7 @@ var game = {
 
     return copyOfArray;
   },
+
   /*game.getMorePlayers asks for number of players and then a name for each player and saves to game.players*/
   getMorePlayers: function(){
     var addPlayer = prompt("Do you want to add an additional player?", "Type 'Y' for 'Yes' Or 'N' for 'No'");
@@ -41,6 +43,7 @@ var game = {
     }else{
       alert("Okay, I will shuffle the deck.");
     }
+    game.shuffleDeck(game.deck);
   // },
   // deal: function(){
   //
