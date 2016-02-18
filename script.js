@@ -21,13 +21,12 @@ var game = {
     var lastCard;
     var randomCard;
 
-    // While there remain elements to shuffle…
     while (totalCards) {
 
-      // Pick a remaining element…
+
       randomCard = Math.floor(Math.random() * totalCards--);
 
-      // And swap it with the current element.
+
       lastCard = game.deck[totalCards];
       game.deck[totalCards] = game.deck[randomCard];
       game.deck[randomCard] = lastCard;
@@ -78,11 +77,3 @@ var game = {
 
 
 game.getMorePlayers()
-
-
-
-// I spent two or three hours on this.  I did not get close to finishing.
-
-// I jotted down my ideas for each method and tried to show the direction I was thinking about taking
-
-// I could probably figure it out if I spent a couple of days working on it
