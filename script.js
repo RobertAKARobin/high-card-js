@@ -1,3 +1,8 @@
+// During the review I noticed (he also did a disclaimer that he would) that Robin said he was just going to go with it
+// as he codes.  I had assumed that durin the course it would be better "practice" if I used the lessons from the day/week
+// so I tried to make the self and this use compared to what was shown.  Does it matter "how" I code since there is
+// always a different way to do the same thing just depends on what makes sense to me and I use proper commenting?
+
 var values  = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A", "Joker"];
 var suits   = ["Clubs", "Diamonds", "Hearts", "Spades"];
 var game = {
@@ -45,8 +50,8 @@ var game = {
   },
   findhighestCard: function(){
     var self  = this;
-    self.hands.sort(function(a, b){
-      if(values.indexOf(a.value) > values.indexOf(b.value)) return -1;
+    self.hands.sort(function(value, suit){
+      if(values.indexOf(value.value) > values.indexOf(suit.value)) return -1;
       else return 1;
     });
   },
