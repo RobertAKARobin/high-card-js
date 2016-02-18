@@ -46,7 +46,9 @@ var game = {
     for (var p  = 0; p < self.players.length; p++) {
       self.hands[Math.floor(Math.random() * (self.deck.length - 1))];
     }
-    console.log("The players have each been delth a card.");
+    console.log("The players have each been dealt a card.");
+    return self.hands;
+
   },
 
 // This finds the highest card in the hands array.
@@ -66,7 +68,7 @@ var game = {
   announceWinners: function(){
     var self = this;
     for (w = 0; w <= self.player.length; w++)
-    if self.player(findHighestCard())
+     self.player(findHighestCard())
   },
 
 // This should clear the game object.
