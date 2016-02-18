@@ -19,7 +19,7 @@ var game = {
     	for(var j, x, i = game.deck.length; i; j = parseInt(Math.random() * i), x = game.deck[--i], game.deck[i] = game.deck[j], game.deck[j] = x);
     	return game.deck;
   },
-//You have to run this at least twice.//
+//gets at least 2 players//
   getMorePlayers: function(){
     while (game.players.length < 2) {
       var playerNames = prompt("Enter player's name.");
