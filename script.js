@@ -24,5 +24,6 @@ var game = {
   },
   playANewGame: function(){
 
+
   }
 }
