@@ -6,17 +6,13 @@ var game = {
   hands: [],
   //Populates the deck array with 52 standard playing cards.
   buildDeck: function(){
-    //console.log(this);
-
     //for loop to output values four times
     var max = suits.length;
     for (var i = 0; i < max; i++) {
         for (var j = 0; j < values.length; j++) {
         game.deck.push([values[j],suits[i]]);
       }
-
     }
-
   },
 
   //Randomizes the order of deck.
@@ -24,28 +20,23 @@ var game = {
     //I copied the code from this site and adapted it: https://bost.ocks.org/mike/shuffle/
 
       var m = game.deck.length, t, i;
-
       // While there remain elements to shuffle…
       while (m) {
-
         // Pick a remaining element…
         i = Math.floor(Math.random() * m--);
-
         // And swap it with the current element.
         t = game.deck[m];
         game.deck[m] = game.deck[i];
         game.deck[i] = t;
       }
-
       return game.deck;
-
-
   },
 
   //Asks the user if they want to add an additional player to the game.
   //If they do, the player is added to the players array. If not, the script continues.
   getMorePlayers: function(){
-
+      var addPlayer = prompt("Currently " + game.players.length + " player(s). Add player name(s) separated by a comma (,) to join game. Otherwise, hit 'Cancel'.");
+      game.players.push(addPlayer.split(", "));
   },
 
   //Assigns one card to each player.
