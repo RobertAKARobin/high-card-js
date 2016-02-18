@@ -9,6 +9,7 @@ var game = {
       for(var i = 0; i < suits.length; i++) {
         game.deck.push(a + ' of ' + suits[i]);
       }
+      console.log(this.deck);
       return this.deck;
     });
   },
@@ -17,11 +18,13 @@ var game = {
 
     for (var i = this.deck.length-1; i >=0; i--) {
       //code below not my idea. but it worked.
+      //got it from https://www.kirupa.com/html5/shuffling_array_js.htm
        var randomIndex = Math.floor(Math.random()*(i+1));
        var itemAtIndex = this.deck[randomIndex];
        this.deck[randomIndex] = this.deck[i];
        this.deck[i] = itemAtIndex;
     }
+    console.log(this.deck);
      return this.deck;
 
   },
@@ -34,11 +37,13 @@ var game = {
     } else if (ans == 'n'){
       return;
     }
+    console.log(this.players);
   },
   deal: function(){
     for(var i = 0; i < this.players.length; i++) {
       this.players[i].card = this.deck[i];
     }
+    console.log(this.players);
   },
   findHighestCard: function(){
     for (var i = 1; i < this.players.length; i++) {
@@ -46,6 +51,7 @@ var game = {
         this.players[i-1] = this.players[i];
       }
     }
+    console.log(this.players);
     return this.players;
   },
   announceWinners: function(){
@@ -58,7 +64,7 @@ var game = {
   playANewGame: function(){
     this.buildDeck();
     this.shuffleDeck();
-    alert('Hello there! (building deck...casino dealer deck magic in process...deck built)');
+    alert('Hello there! (building deck...casino dealer deck magic in process...deck built...algorithm courtesy of https://www.kirupa.com/html5/shuffling_array_js.htm)');
     this.getMorePlayers();
     var inGame = '';
     for (var i = 0; i < this.players.length; i++) {
