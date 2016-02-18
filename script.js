@@ -14,10 +14,15 @@ var game = {
 
       },
   shuffleDeck: function(){
-
+  var deckOne;
+  for (i = 0; i < players.length; i ++) {
+    deckOne.push(deck[Math.floor((Math.random() * 51) + 0)]);
+    }
   },
-  getMorePlayers: function(){
 
+  getMorePlayers: function(){
+    game.players.push(prompt("Enter a player name:"));
+        },
   },
   deal: function(){
 
