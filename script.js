@@ -210,7 +210,7 @@ function tally(){
 // if this is called more than once within the same browser session, an error starting
 // winner() is not a function will be thrown after the first call to this function.
 function winner(){
-  winner = game.findHighestCard();
+  var winner = game.findHighestCard();
   WriteOut("Congratulations " + winner[0] + "!!!");
   WriteOut("Who is the winner with a " + winner[1].lngVal + " of " + winner[1].suit + ".");
 }
@@ -220,8 +220,10 @@ function auto(){
   WriteOut("-----");
   deal();
   dispHands();
-  tally();
   WriteOut("-----");
+  winner();
+  tally();
+  WriteOut("-----");  
 }
 
 //
