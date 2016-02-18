@@ -21,14 +21,9 @@ var game = {
       , temporaryValue
       , randomIndex;
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
-      // And swap it with the current element.
       temporaryValue = this.deck[currentIndex];
       this.deck[currentIndex] = this.deck[randomIndex];
       this.deck[randomIndex] = temporaryValue;
@@ -36,15 +31,38 @@ var game = {
   },
 
   getMorePlayers: function(){
-
+    var name = window.prompt("Enter the name of a new player or press 'cancel' to begin game.")
+    if(name)
+    {
+      this.players.push(name);
+      this.getMorePlayers();
+    }
   },
+
   deal: function(){
 
   },
-  findHighestCard: function(){
 
+  findHighestCard: function(){
+    this.hands.sort(function(hand1, hand2)
+    {
+      if(values.indexOf(hand1.value) > values.indexOf(hand2.value))
+      {
+        return -1;
+      }
+      else {
+        return 1;
+      };
+    });
   },
+
   announceWinners: function(){
+    var text;
+    this.hands.forEach(function(hand, place)
+    {
+      text += hand.player + "is number " + (place + 1) + ", with the " + hand.value + " of " + "hand.suit" + ".";
+    });
+    window.alert(text);
 
   },
   playANewGame: function(){
