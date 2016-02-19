@@ -5,19 +5,29 @@ var game = {
   players: [],
   hands: [],
   buildDeck: function(){
-
+    var self = this;
+    values.forEach(function(value){
+    suits.forEach(function(suit){
+      self.deck.push([value, suit]);
+    });
+  });
   },
   shuffleDeck: function(){
+    var self = this;
+    values.forEach(function(value){
+      self.deck(math.random())
 
   },
   getMorePlayers: function(){
-
+    var game = addPlayers()
   },
   deal: function(){
-
+    var cards = (values, suits)
+    this.cards = new Array();
   },
   findHighestCard: function(){
-
+    var cards = (values, suits)
+    array.pop("A")
   },
   announceWinners: function(){
 
