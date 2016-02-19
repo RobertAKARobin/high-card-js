@@ -4,13 +4,27 @@ var game = {
   deck: [],
   players: [],
   hands: [],
+
   buildDeck: function(){
+    var self = this;
+    for (var v = 0; v < values.length; v++){
+      for (var s = 0; s < suits.length; s++)
+      this.deck.push([values], [suits]);
+    }
+  }
+
+
+/* build the deck by combining items in var values and var suits*/
 
   },
-  shuffleDeck: function(){
+  /* shuffleDeck: function() {
+    var shuffle = math.random(deck)} */
 
-  },
+/*shuffle deck by randomizing deck key inside var game
+  }, */
   getMorePlayers: function(){
+
+/* when more players are added pass it into the var game players array */
 
   },
   deal: function(){
@@ -23,6 +37,8 @@ var game = {
 
   },
   playANewGame: function(){
+
+/* Reset the game upon click ok on the dialog box */
 
   }
 }
