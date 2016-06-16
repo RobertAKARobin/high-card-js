@@ -36,7 +36,8 @@ var game = {
       }
     }
   },
-  shuffleArray: function(array) {            //borrowed from the Internet
+  shuffleArray: function(array) {         //borrowed from the Internet
+    console.log("shuffleArray");
     for (var i = array.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
       var temp = array[i];
@@ -81,8 +82,9 @@ var game = {
     //prompt for player names,
   },
   deal: function(){
-    // Each trick involves two pops, one for player A and one for player B.
-    // create an Trick array that has two cards, one for each player
+    console.log("deal");
+    // use splice to get two cards from the shuffledValues array
+    // and put them in the hands array.
     // End with a loop that runs through the deck and execute each trick.
     var hands = [];
     hands = shuffledValues.splice(0,2);
