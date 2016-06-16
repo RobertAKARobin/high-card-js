@@ -42,24 +42,25 @@ var game = {
   },
   deal: function(){
     for (var i = 0; i < this.players.length; i++) {
-      console.log(this.players[i] + this.deck.pop() );
-      this.hands.push([this.players[i],this.deck.pop()]);
+//      this.hands.push([this.players[i],this.deck.pop()]);
+        this.hands.push({"name" : this.players[i], "card" : this.deck.pop()});
+
     }
   },
   findHighestCard: function(){
     this.hands = this.hands.sort( function(a,b) {
-      var cardA = a[1];
-      var cardB = b[1];
-      if (values.indexOf(cardA.rank) < values.indexOf(cardB.rank)) {
+//      var cardA = a[1];
+//      var cardB = b[1];
+      if (values.indexOf(a.card.rank) < values.indexOf(b.card.rank)) {
         return -1;
       }
-      else if (values.indexOf(cardA.rank) > values.indexOf(cardB.rank)) {
+      else if (values.indexOf(a.card.rank) > values.indexOf(b.card.rank)) {
         return  1;
       }
-      else if (suits.indexOf(cardA.suit) < suits.indexOf(cardB.suit)) {
+      else if (suits.indexOf(a.card.suit) < suits.indexOf(b.card.suit)) {
         return -1;
       }
-      else if (suits.indexOf(cardA.suit) > suits.indexOf(cardB.suit)) {
+      else if (suits.indexOf(a.card.suit) > suits.indexOf(b.card.suit)) {
         return 1;
       }
       else {
@@ -71,9 +72,9 @@ var game = {
   announceWinners: function(){
     var next;
     var winner = this.hands.pop();
-    var msg = winner[0] + " is the winner, with the " + winner[1].rank + " of " + winner[1].suit + "\n";
+    var msg = winner.name + " is the winner, with the " + winner.card.rank + " of " + winner.card.suit + "\n";
     while (next = this.hands.pop()) {
-      msg += next[0] + " is next, with the " + next[1].rank + " of " + next[1].suit + "\n";
+      msg += next.name + " is next, with the " + next.card.rank + " of " + next.card.suit + "\n";
     }
     alert(msg);
   },
