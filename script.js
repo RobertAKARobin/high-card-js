@@ -42,15 +42,12 @@ var game = {
   },
   deal: function(){
     for (var i = 0; i < this.players.length; i++) {
-//      this.hands.push([this.players[i],this.deck.pop()]);
         this.hands.push({"name" : this.players[i], "card" : this.deck.pop()});
 
     }
   },
   findHighestCard: function(){
     this.hands = this.hands.sort( function(a,b) {
-//      var cardA = a[1];
-//      var cardB = b[1];
       if (values.indexOf(a.card.rank) < values.indexOf(b.card.rank)) {
         return -1;
       }
