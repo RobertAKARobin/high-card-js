@@ -201,3 +201,8 @@ module.exports = {
     ]
 }
 ```
+
+## References
+
+- [EventEmitterバケツリレースタイル/フレームワークなしで小さくFluxする](http://qiita.com/mizchi/items/6a3500e598ec36746509)
+- [Node.js::Events](https://nodejs.org/api/events.html)
