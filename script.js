@@ -33,18 +33,26 @@ console.log(game.deck);
   console.log(game.deck)
   },
   getMorePlayers: function(){
-
+        var name = prompt("Would you like to add players?");
+        var i = 0;
+        if (name == "yes"){
+          if(game.players[i] == null){
+          game.players[0] = response;
+        }
+      }
   },
   deal: function(){
-
+      // choose (based on the number of random players) random indexes from the array
+      //store the cards
   },
   findHighestCard: function(){
-
+      //compare all stored values
+      //return highest value card
   },
   announceWinners: function(){
-
+      // winner equals the player with the highest card
   },
   playANewGame: function(){
-
+    buildDeck;
   }
 }
