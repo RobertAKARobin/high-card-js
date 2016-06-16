@@ -61,13 +61,14 @@ var game = {
     var playAgain = prompt("Rematch? Y/N")
       if (playAgain === "Y"){
         game.players = [];
+        game.deck = []; //need to rebuid the deck since we shifted cards out
         play();
       }
     }
 }
-game.buildDeck();
 
 function play(){
+  game.buildDeck();
   game.shuffleDeck(game.deck);
   game.getMorePlayers();
   game.deal();
