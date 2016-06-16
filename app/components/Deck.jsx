@@ -9,21 +9,18 @@ const propTypes = {
 
 function Deck({ deck, players, emitter }) {
 
-  // console.log(players[0]);
+  // console.log(players);
+
   return (
-    <div className="deck">
-      <div className="well">
-        {
-          players.map( player =>
-            <Player
-              name={player.name}
-              score={player.score}
-              emitter={emitter}
-              key={player.uuid}
-            />
-          )
-        }
-      </div>
+    <div className="deck row">
+      {
+        players.map( player =>
+          <Player
+            player={player}
+            key={player.uuid}
+          />
+        )
+      }
     </div>
   )
 };

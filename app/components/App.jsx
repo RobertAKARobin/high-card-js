@@ -1,15 +1,9 @@
 import React, { PropTypes } from 'react';
-import { EventEmitter } from "events";
+import { EventEmitter }     from "events";
 import * as shortid         from 'shortid';
 import NotificationSystem   from 'react-notification-system';
-import Deck   from './Deck';
-import NewPlayerForm   from './NewPlayerForm';
-
-
-/*
-The "interface" for this game consists entirely of alert boxes (aka dialog boxes)
-in your web browser.
- */
+import Deck                 from './Deck';
+import NewPlayerForm        from './NewPlayerForm';
 
 class App extends React.Component {
 
@@ -21,36 +15,63 @@ class App extends React.Component {
 
   constructor( props ) {
     super( props );
+
+    // Initial state of the app.
     this.state = {
       deck:    this.buildDeck(),
       players: [],
       hands:   [],
       isPromptShown: false,
-      promptMsg: "",
+      isFormShown:   false
     };
 
     // Initialize the notification.
     this._notificationSystem = null;
+  }
 
+  // https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods
+  // http://qiita.com/mizchi/items/6a3500e598ec36746509
+  componentWillMount() {
     // Create an emitter for this app.
+    // https://nodejs.org/api/events.html
     this.emitter = new EventEmitter;
 
     // Event handlers
-    this.emitter.on("newPlayer", (playerName) => {
+    this.emitter.on("newPlayer", playerName => {
+      if (playerName.length < 1) {
+        this._addNotification( 'Name must not be empty' );
 
-      let tmpList = Array.from( this.state.players );
-      tmpList.push({
-          name:  playerName,
-          score: 0,
-          uuid:  shortid.generate()
-      })
+      } else {
+        let newPlayer = {
+            name:  playerName,
+            score: 0,
+            card:  null,
+            uuid:  shortid.generate()
+        }
 
-      this.setState({
-        players: tmpList
-      });
+        this.setState({
+          players: [...this.state.players, newPlayer],
+          isFormShown: false
+        });
+      }
     });
   }
 
+  componentDidMount() {
+    // Set up the notification system.
+    this._notificationSystem = this.refs.notificationSystem;
+  }
+
+  componentWillUnmount() {
+    this.emitter.removeAllListeners();
+  }
+
+  _addNotification( message ) {
+    this._notificationSystem.addNotification({
+      message: message,
+      level:   'success'
+    });
+  }
 
   /**
    * Populates the deck array with 52 standard playing cards.
@@ -60,13 +81,14 @@ class App extends React.Component {
     // Create a set of 52 cards.
     const suits  = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
     const values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    let cards  = [];
+    let cards    = [];
 
     for ( let suitIndex = 0; suitIndex < 4; suitIndex++ ) {
       for ( let valueIndex = 0; valueIndex < 13; valueIndex++ ) {
         cards.push({
           suit:  suits[ suitIndex ],
           value: values[ valueIndex ],
+          // player: -999,
           uuid: shortid.generate(),
         });
       }
@@ -75,31 +97,6 @@ class App extends React.Component {
     // console.log(cards);
     return cards;
   }
-
-  /**
-   * [valueToString description]
-   * @param  {Number} value
-   * @return {String} The the corresponding to the specified value.
-   */
-  valueToString( value ) {
-    switch( value ) {
-      case 0: return '2';
-      case 1: return '3';
-      case 2: return '4';
-      case 3: return '5';
-      case 4: return '6';
-      case 5: return '7';
-      case 6: return '8';
-      case 7: return '9';
-      case 8: return '10';
-      case 9: return 'J';
-      case 10: return 'Q';
-      case 11: return 'K';
-      case 12: return 'A';
-      default: console.error( 'invalid value: %s', value );
-    }
-  }
-
 
   /**
    * Randomizes the order of deck.
@@ -121,16 +118,15 @@ class App extends React.Component {
     });
   }
 
-  /** TODO
+  /**
    * Asks the user if they want to add an additional player to the game.
    * If they do, the player is added to the players array.
    * If not, the script continues.
-   * @return {[type]} [description]
    */
   getMorePlayers(){
-    // var userName = prompt("Hello");
-
-
+    this.setState({
+      isFormShown: ! this.state.isFormShown
+    });
   }
 
   /**
@@ -138,7 +134,26 @@ class App extends React.Component {
    * @return {[type]} [description]
    */
   deal(){
+    this.shuffleDeck();
 
+    // Create a copy of current deck.
+    let deckCopy = [...this.state.deck];
+
+    // For each player
+    let playersCopy = [...this.state.players].map( player => {
+
+      // Get a card and remove it from the deck.
+      let card = deckCopy.splice(0, 1)[0];
+
+      // Assign that card to the player.
+      return Object.assign( player, { card: card });
+    });
+
+    // Update players and deck.
+    this.setState({
+      players: playersCopy,
+      deck:    deckCopy
+    });
   }
 
   /**
@@ -148,7 +163,7 @@ class App extends React.Component {
    * @return {[type]} [description]
    */
   findHighestCard(){
-
+    // TODO
   }
 
   /**
@@ -159,7 +174,7 @@ class App extends React.Component {
    * @return {[type]} [description]
    */
   announceWinners(){
-
+    // TODO
   }
 
   /**
@@ -167,9 +182,14 @@ class App extends React.Component {
    * @return {[type]} [description]
    */
   playANewGame(){
-    // Reset announcement.
-
-    // Reset
+    // Reset the game state.
+    this.setState({
+      deck:    this.buildDeck(),
+      players: [],
+      hands:   [],
+      isPromptShown: false,
+      isFormShown:   false
+    });
   }
 
   render() {
@@ -187,30 +207,36 @@ class App extends React.Component {
     return (
       <div>
         <h1 className="page-header">High cards</h1>
+
         <NotificationSystem
           ref="notificationSystem"
           style={notificationStyles}
         />
 
         <NewPlayerForm
-          isShown={true}
+          isShown={this.state.isFormShown}
           emitter={this.emitter}
         />
 
-        <button
-          onClick={this.playANewGame.bind(this)}
-          className="btn btn-default">playANewGame
-        </button>
-        <button
-          onClick={this.getMorePlayers.bind(this)}
-          className="btn btn-default">
-          getMorePlayers
-        </button>
-        <button
-          onClick={this.deal.bind(this)}
-          className="btn btn-default">
-          Deal
-        </button>
+        <div className="btn-group">
+          <button
+            onClick={this.playANewGame.bind(this)}
+            className="btn btn-default">
+            Reset
+          </button>
+          <button
+            onClick={this.getMorePlayers.bind(this)}
+            className="btn btn-default">
+            Add a player
+          </button>
+          <button
+            onClick={this.deal.bind(this)}
+            className="btn btn-default">
+            Deal
+          </button>
+        </div>
+
+        <hr />
 
         <Deck
           deck={this.state.deck}
